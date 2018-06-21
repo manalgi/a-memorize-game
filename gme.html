@@ -1,4 +1,4 @@
-﻿<%@ Page Language="VB" AutoEventWireup="false" CodeFile="gme.aspx.vb" Inherits="gme" %>
+
 
 <!DOCTYPE html>
 
@@ -216,105 +216,7 @@
     </script>
 
 
-     <canvas id="canvas2" width="500" height="500" style="border:5px double blue; background-color:cadetblue;">
-            </canvas>
-        <script>
-            var canvass2 = document.getElementById("canvas2");
-            var ctx2 = canvass2.getContext("2d");
-            var r = canvass2.height / 2;
-            ctx2.translate(r, r);
-            r = r * 0.90;
-            setInterval(drawclock, 1000);
-
-            function drawclock() {
-               /* ctx2.arc(100, 0, r, 0, 2 * Math.PI);
-                ctx2.fillStyle = "white";
-                ctx2.fill();
-                var thumbImg = document.createElement('img');
-                thumbImg.src = 'photos/samuel1.jpg';
-                ctx2.drawImage(thumbImg, -200, -200, 400, 350);
-                ctx2.closePath();
-                ctx2.fill();*/
-                drawface(ctx2, r);
-                drawnum(ctx2, r);
-                drawTime(ctx2, r);
-
-              
-            };
-
-            function drawface(ctx2, r) {
-                var grad;
-                ctx2.beginPath();
-                ctx2.arc(0, 0, r, 0, 2 * Math.PI);
-                ctx2.fillStyle = "cadetblue";
-                ctx2.fill();
-                grad = ctx2.createRadialGradient(0, 0, r * 0.95, 0, 0, r * 1.1);
-                grad.addColorStop(0, 'red');
-                grad.addColorStop(0.25, '#ff3333');
-                grad.addColorStop(0.5, 'white');
-                grad.addColorStop(0.75, '#ff3333');
-                grad.addColorStop(1, '#ff3333');
-                ctx2.strokeStyle = grad;
-                ctx2.lineWidth = r*0.1;
-                ctx2.stroke();
-
-                ctx2.beginPath();
-                ctx2.arc(0, 0, r*0.1, 0, 2*Math.PI);
-                ctx2.fillStyle = 'red';
-                ctx2.fill();
-
-                
-
-            }
-            
-            function drawnum(ctx2, r) {
-                var ang;
-                var num;
-                ctx2.font = r * 0.15 + "px arial";
-                ctx2.textBaseline = "middle";
-                ctx2.textAlign = "center";
-
-                for (num = 1; num < 13; num++) {
-                    ang = num * Math.PI / 6;
-                    ctx2.rotate(ang);
-                    ctx2.translate(0, -r * 0.85);
-                    ctx2.rotate(-ang);
-                    ctx2.fillText(num.toString(), 0, 0);
-                    ctx2.rotate(ang);
-                    ctx2.translate(0, r * 0.85);
-                    ctx2.rotate(-ang);
-                }
-            }
-            function drawTime(ctx2, r){
-            var now = new Date();
-            var hour = now.getHours();
-            var minute = now.getMinutes();
-            var second = now.getSeconds();
-            //hour
-            hour=hour-12;
-            hour=(hour*Math.PI/6);
-            drawHand(ctx2, hour, r*0.5, r*0.07);
-            //minute
-            minute=(minute*Math.PI/30)+(second*Math.PI/(30*60));
-            drawHand(ctx2, minute, r*0.65, r*0.07);
-            // second
-            second=(second*Math.PI/30);
-            drawHand(ctx2, second, r*0.6, r*0.02);
-            }
-
-            function drawHand(ctx2, pos, length, width) {
-            ctx2.beginPath();
-            ctx2.lineWidth = width;
-            ctx2.lineCap = "round";
-            ctx2.moveTo(0,0);
-            ctx2.rotate(pos);
-            ctx2.lineTo(0, -length);
-            ctx2.stroke();
-            ctx2.rotate(-pos);
-            }
-
-            
-         </script>
+    
     <p>the Rules: use your keyboard to repeat after the computer, after each new step you have to reapet from the begining </p>
    
 </body>
